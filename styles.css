@@ -49,3 +49,7 @@
 .media-thumbs{overflow-x:auto;scrollbar-width:thin}
 .video-thumb small{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block}
 @media(max-width:700px){.video-source-link{bottom:31px;right:4px}.media-thumbs{gap:4px}}
+
+/* Final desktop range ribbon audit: preserve the complete value in hover text and full technical table; never clip into adjacent cards. */
+.hero-metric strong{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;overflow:hidden;overflow-wrap:anywhere}
+@media (max-width:850px){.hero-metric strong{-webkit-line-clamp:3;line-clamp:3}}
