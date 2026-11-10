@@ -1,6 +1,6 @@
 # Global Counter-UAS atlas — evidence expansion (10 November 2026)
 
-This register documents the public-source update added to the 35-family presentation on branch `feat/cuas-visual-atlas-v3`. The current dataset is a **curated, non-exhaustive 45-family comparison**, including 6 India-origin families. Do **not** advertise it as covering every system in the world. The September 2026 *Unmanned Airspace Global Counter-UAS Systems Directory* reports **654 company entries** and **more than 1,000 system/product descriptions**; an evidence-checked complete global index would be a separate research product.
+This register documents the public-source update added to the 35-family presentation on branch `feat/cuas-visual-atlas-v3`. The first-pass dataset was a **curated, non-exhaustive 45-family comparison**; the subsequent global audit raises it to **54 distinct families**, including 6 India-origin families. Do **not** advertise it as covering every system in the world. The September 2026 *Unmanned Airspace Global Counter-UAS Systems Directory* reports **654 company entries** and **more than 1,000 system/product descriptions**; an evidence-checked complete global index would be a separate research product.
 
 ## Reading the system dashboards
 - **Radar model/type/band**: for example AESA, FMCW, pulse-Doppler, electronically scanned, or rotating. "Not disclosed" means the public source has not established the variant-specific value. A receiver's RF monitoring band is **not** the radar transmitting band.
@@ -81,3 +81,27 @@ Videos are linked or embedded through official player URLs. They have **not been
 19. [APS FIELDctrl Range](https://apsystems.tech/en/products/fieldctrl-range/)
 20. [Fortem TrueView R20](https://fortemtech.com/products/trueview-r20/)
 21. [Sept 2026 industry directory coverage statement](https://www.unmannedairspace.info/counter-uas-industry-directory/)
+
+
+## Final wider-country audit — nine new families (10 November 2026)
+
+The second review added SRC Silent Archer (United States), IAI / ELTA Drone Guard Gen 5 (Israel), GUARDION and GARMR (Germany), OpenWorks SkyWall Patrol (United Kingdom), Kongsberg PROTECTOR CUAS (Norway), IACIT DRONEBlocker (Brazil), Kvertus ATLAS (Ukraine), and NT Service SkyWiper EDM4S (Lithuania). Full profile sources are included under each family in `data/research_global_2026.js`.
+
+These systems add sensor/effector architectures that the first 45-family shortlist missed: deployable Army/Air Force EW–radar integration, commercially deployed capture nets, European interceptor-drone vehicles, existing remote weapon stations with new MESA radar, Latin American electronic effects, and Ukrainian electronic-defence systems.
+
+**Key independently recognizable claims**:
+- **SRC Silent Archer**: official datasheet names AN/TPQ-50, AN/TPQ-49A, Gryphon R1410 options, EW direction finding, EO/IR and C2; U.S. Army/Air Force deployments reported by manufacturer (https://www.srcinc.com/pdf/counter-uas-silent-archer.pdf).
+- **Kongsberg PROTECTOR CUAS**: 29 September 2026 Dutch JLTV / RS4 contract; Echodyne MESA selection announced 9 September 2026 (https://www.kongsberg.com/what-we-do/defence-and-security/remote-weapon-systems/protector-cuas/ and https://www.echodyne.com/newsroom/kongsberg-selects-echodyne-mesa-radar-for-counter-uas-weapon-systems).
+- **IACIT DRONEBlocker**: Brazilian Army use at Rio 2016 Olympics documented on the manufacturer's current page (https://www.iacit.com.br/en/products/defense/droneblocker).
+- **Zen ZADS procurement**: the Indian listed-company's 31 October 2025 filing discloses **₹289 crore including GST** for **two MoD anti-drone upgrade orders**, not a ZADS system unit price (https://www.zentechnologies.com/corporate-announcements).
+- **Robin IRIS 2026.04 datasheet**: target-specific detection examples: nano 0.249 kg **1.1 km**, 0.9 kg **3.1 km**, 2.9 kg **3.7 km**, 52 kg **7.6 km**; separate **5 km / 12 km instrumented** limits. These are manufacturer observed values under typical conditions, not independent laboratory validation (https://www.robinradar.com/hubfs/Iris%20Datasheet%20V15.7_Online.pdf).
+
+## Cost and procurement reality check
+
+The U.S. Congressional Budget Office's **July 9, 2026** `Options to Counter Small Unmanned Aircraft Systems` estimates **US$74m** to equip a representative military installation with layered defence and about **US$5m/year** to sustain it, excluding some personnel costs. Those are representative **system-of-systems** costs and **not** selling prices for any product in this atlas. CBO concludes no single technology provides complete protection, reinforcing the mission-specific Top 3 instead of an unsupported absolute ranking. Full reference: https://www.cbo.gov/publication/62262.
+
+The 2026 peer-reviewed open-access review `From Detection to Countermeasure: A Review of Key Technologies in Counter-Unmanned Aerial Vehicle Systems`, DOI **10.1049/csy2.70048**, surveys radar, EO/IR, acoustic, RF and capture, RF, laser and interceptor layers: https://doi.org/10.1049/csy2.70048.
+
+## Editorial verification limits
+
+This is a source-supported technical comparison, not a live military acceptance database. Manufacturer claims are tagged; public information often lacks variant-specific test conditions, independent identification quality, false-alarm rate, simultaneous successful defeats, SWaP-C, sale price or shot cost. Missing values must stay undisclosed rather than inferred. Some galleries use publisher-hosted images that can be unavailable offline; some video entries link to publisher pages instead of embedded clips. Detailed technical controls for jamming or weapon deployment are intentionally not included.
