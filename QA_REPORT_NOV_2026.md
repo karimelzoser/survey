@@ -8,13 +8,13 @@
 - **60 scenes**: cover, methods, 54 individual system dashboards, comparison, Top 3 shortlist, target types, and evidence notes.
 - Each of the 54 system profiles has a **radar-status record** (including explicit "none"/"not applicable"/"undisclosed" for non-radar systems) and displays model/type, published radar frequency band, qualified detection range and coverage, plus sensor C2, response effect, deployment/cost and comparative strengths/limits.
 - **Three editorial recommendations by use case**: Skyranger 30/35 (mobile gun-based defence); Rafael Drone Dome (fixed-site multisensor); Fortem SkyDome/DroneHunter (controlled physical capture). Not an independently verified global efficacy ranking.
-- **145 HTTPS source references** are present in the data. The URL syntax and per-profile source presence were programmatically checked; *individual HTTP reachability, future redirects, paywalls, and claim-to-source verification across all 145 are NOT guaranteed*. Strong claims were spot-checked against relevant government/manufacturer PDFs and procurement notices.
+- **146 HTTPS source references** are present in the data. The URL syntax and per-profile source presence were programmatically checked; *individual HTTP reachability, future redirects, paywalls, and claim-to-source verification across all 146 are NOT guaranteed*. Strong claims were spot-checked against relevant government/manufacturer PDFs and procurement notices.
 
 ## Media verification: the precise remaining limitations
 - **51/54 profiles have at least one photo-tagged view**; this includes previous credited photographs, some views/crops from the same original photo, and newly sourced *publisher-hosted* exhibition/field images. Do **not** interpret this as 51 distinct manufacturer-photo sets or offline-embedded photos.
 - **32 existing local equipment-photo references** remain bundled from the original asset package. At least **21 family profiles reference externally hosted images** (not verified as available offline or licensed for redistribution); some profiles may contain both local and external images.
 - **Three profiles have no authenticated directly displayable equipment photo**: **BEAM 3.0**, **Sky Fortress acoustic network**, **Saab mobile modular C-UAS (FMV 2026)**. In particular, a photo of Saab's generic Trackfire technology is not evidence that it depicts the exact FMV 2026 purchased configuration. Fake renders have not been substituted.
-- **20 video references across 18 profiles**. Of those, **13 references** use embedded YouTube/DVIDS player types, **seven** are publisher/video-gallery links only. "Embedded" means original publisher playback is requested in an iframe, not that the video has been downloaded, rehosted or guaranteed to play across regions or corporate networks. Remaining 36 families lack a verified dedicated video record.
+- **21 video references across 18 profiles**. Of those, **14 references** use embedded YouTube/DVIDS player types, **seven** are publisher/video-gallery links only. "Embedded" means original publisher playback is requested in an iframe, not that the video has been downloaded, rehosted or guaranteed to play across regions or corporate networks. Remaining 36 families lack a verified dedicated video record.
 - Several newly added genuine source photographs are **hot-linked** to their original publisher. Credit and source link are shown. Copyright ownership or public redistribution rights have **not** been established for all of them. No claim of offline playback for those assets.
 
 ## Programmatic functionality tests
@@ -35,7 +35,7 @@
 
 ## Review follow-ups / residual gaps
 - Confirm reproduction rights for hotlinked third-party media and, where licensed, **download and bundle** high-resolution equipment photos and subsystem photos into the repository so the entire deck works offline.
-- Verify individual playback and embed policies for each of the 20 video references from the intended hosting domain; provide publisher-page fallbacks (already included).
+- Verify individual playback and embed policies for each of the 21 video references from the intended hosting domain; provide publisher-page fallbacks (already included).
 - Obtain target-calibrated detection tests, operating false-alarm rates, total track counts, independently measured interception probabilities, environmental test data, SWaP-C and cost-per-successful-defeat by exact variant. In most systems, this data is **not public**.
 - The directory is *not an exhaustive global census*: the September 2026 Unmanned Airspace industry reference counts **654 companies and >1,000 products**. Coverage of 54 high-value families is curated rather than universal.
 
@@ -51,3 +51,6 @@
 - Scholarly literature review (2026), DOI 10.1049/csy2.70048: https://doi.org/10.1049/csy2.70048
 
 **Overall QA result:** application structural/function simulation **PASS**; core scientific labeling and additional country/source audit **PASS with caveats**; complete real-browser/media/license audit **INCOMPLETE**. Do not label the full presentation 100% externally verified.
+
+## Final exact-code simulation recheck — 10 November 2026
+After image-source and second Zen official-video additions, the exact GitHub branch was re-fetched and re-evaluated: **54 unique families, 9 categories, 6 Indian systems, 60/60 successful scene transitions, 54/54 radar technical sections, 146 HTTPS source references, 21 media entries (14 embed-style YouTube/DVIDS, seven publisher-page references), 51 profiles with a photo-tagged view and three still without**. No JavaScript exceptions or missing family IDs were found during the DOM-compatible scene traversal. This is a **software structure simulation**, *not* an exhaustive live browser or copyright audit.
