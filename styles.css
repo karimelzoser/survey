@@ -42,3 +42,10 @@
 .ranking-disclaimer{font-size:11px;color:#a8bbc9;line-height:1.5;margin-top:16px}
 @media(max-width:900px){.ranking-grid{grid-template-columns:1fr;gap:10px}.ranking-card{min-height:0;padding:16px}.ranking-slide{overflow-y:auto}.ranking-card h2{font-size:23px}}
 @media(min-height:0px) and (max-height:800px) and (min-width:901px){.ranking-grid{margin-top:12px}.ranking-card{min-height:300px;padding:15px}.ranking-line{margin-top:5px;padding-top:9px}}
+
+/* Verified media navigation and 9-way method taxonomy */
+.video-source-link{position:absolute;right:9px;bottom:38px;z-index:5;background:rgba(9,15,22,.89);padding:5px 7px;border-radius:7px;font-size:9px}
+.video-source-link a{color:#e8c18a;text-decoration:none}
+.media-thumbs{overflow-x:auto;scrollbar-width:thin}
+.video-thumb small{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block}
+@media(max-width:700px){.video-source-link{bottom:31px;right:4px}.media-thumbs{gap:4px}}
