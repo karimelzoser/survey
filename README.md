@@ -1,3 +1,13 @@
+# Counter-UAS Executive Dashboard — 2026
+
+**One concise, visual presentation slide per system.** The 42-scene static HTML deck covers 37 counter-UAS system families, then shows the searchable comparison and drone-class tradeoffs. Each system dashboard shows documented sensor, control and response subsystems, named ranges, capacities, manufacturer/country, acquisition and engagement-cost evidence, operational users, upgrades, pros and cons, original equipment imagery, architectural plates, and cited public sources.
+
+Use arrow keys to navigate, **M** to open the directory, and **F** for fullscreen. Click equipment images and diagrams to enlarge; scroll the technical evidence panel inside the same slide.
+
+**Video rights and evidence:** Publisher video files are not downloaded or rehosted where authorization is unavailable. A small number of official YouTube videos are embedded in-page (online connection needed); other verified official videos open at the publisher. Profiles without verified footage say so explicitly. Existing images remain credited in `MEDIA_CREDITS.md`. Vendor range figures must not be interpreted as independent probability-of-defeat measurements.
+
+---
+
 # Counter-UAS Technology Atlas — 2026
 
 A standalone, cinematic HTML5 technical presentation of 37 military and civilian counter-uncrewed aircraft system families. It draws on the accompanying research atlas and its cited official product documentation, government publications, papers, and media sources.
