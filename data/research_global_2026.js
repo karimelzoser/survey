@@ -54,3 +54,21 @@
   sky.sources.unshift({label:"UNITED24 Media July 2025 Sky Fortress third-generation reporting",url:"https://united24media.com/war-in-ukraine/sky-fortress-ukraines-acoustic-detection-system-that-tracks-drones-cheap-and-fast-9451"},{label:"U.S. Army 2026 acoustic drone detection network study",url:"https://api.army.mil/e2/c/downloads/2026/04/30/af450e75/no-26-1115-listening-to-the-sky-acoustic-drone-detection-in-ukraine-mar-26.pdf"});
  }
 })();
+
+/* Extra official video and vendor-specific radar processing data (10 Nov 2026). */
+(function(){
+ const a=window.CUAS_V3||[];
+ const zen=a.find(x=>x.name==="Zen Anti-Drone System (ZADS)");
+ if(zen){
+  const v={type:"youtube",id:"_2jQpVGfn2o",title:"Zen Anti-Drone System full product demonstration",source:"Zen Technologies official YouTube, 21 Oct 2025",url:"https://www.youtube.com/watch?v=_2jQpVGfn2o"};
+  if(!zen.video_items.some(x=>x.id===v.id))zen.video_items.push(v);
+ }
+ const b=a.find(x=>x.name==="Blighter A400 radar");
+ if(b){
+  b.capacity="Manufacturer A400 family page: more than 500 targets per scan; the published scan figure is **track-processing capability**, not simultaneous engagement and not validated drone Pd.";
+  b.range_data.concurrent=">500 targets per scan (vendor); radar is detection-only — zero weapons engaged";
+  b.radar.coverage="90–360° sector configurations; fastest advertised scan 0.25 s; operating −32°C to +60°C";
+  b.radar.url="https://blighter.com/products/a400-series-radars/";
+  b.sources.unshift({label:"Blighter A400 official scan capacity and coverage specifications",url:b.radar.url});
+ }
+})();
