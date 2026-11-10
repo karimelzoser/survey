@@ -14,3 +14,25 @@
    x.sources.unshift({label:"IRIS official 2026.04 tested target-class datasheet",url:x.radar.url});
  }
 })();
+
+
+/* Photo-source QA addendum: 10 November 2026. Links are publisher-hosted; not
+   locally downloaded and may not have public redistribution licenses. */
+(function(){
+ const a=window.CUAS_V3||[];
+ const photos=[{"n":"SERP-VS13D / VS6D","url":"https://ruselectronics.ru/upload/iblock/83e/3sdvb4r3axbhswn3hcjetzxmiruxiyps.jpg","credit":"Ruselectronics / Rostec official product photo of SERP-VS13D","page":"https://ruselectronics.ru/news/26838-rostekh-vpervye-predstavit-na-innoprome-v-belorussii-sistemu-podavleniya-dronov-serp/","label":"SERP-VS13D official equipment photograph"},{"n":"Zen Anti-Drone System (ZADS)","url":"https://i0.wp.com/www.defencexp.com/wp-content/uploads/2022/05/zads-anti-drone-system.jpg?ssl=1&w=600","credit":"DefenceXP editorial photo; verify copyright with image publisher","page":"https://www.defencexp.com/anti-drone-systems-101/","label":"Zen ZADS equipment photograph — editorial source"},{"n":"Vajra Sentinel","url":"https://www.sps-aviation.com/experts-speak/images/BBBS.jpg","credit":"SP's Aviation photo: Vajra Sentinel vendor stand and displayed equipment (not isolated weapon photo)","page":"https://www.sps-aviation.com/experts-speak/?id=832","label":"BBBS Vajra Sentinel exhibit with subsystems"},{"n":"Blighter A400 radar","url":"https://blighter.com/wp-content/uploads/2025/09/blighter-a422-hp-air-security-radar-with-w20s-antennas-on-mast-front-and-side-view-light-stone-1920x1280-1.jpg","credit":"Blighter official A400 / A422 unit-on-mast manufacturer photograph","page":"https://blighter.com/products/a400-series-radars/","label":"Blighter A400 manufacturer radar photograph"},{"n":"BEL Drone Detection Radar (DDR)","url":"https://images.indianexpress.com/2021/12/aksheev-drone.jpg?w=1200","credit":"The Indian Express 2021 photograph of BEL portable drone-detection FMCW radar","page":"https://indianexpress.com/article/cities/bangalore/bel-develops-customisable-drone-detection-radar-with-360-degree-coverage-7673961/","label":"BEL drone detection radar demonstration photograph"},{"n":"IACIT DRONEBlocker","url":"https://www.janes.com/images/default-source/news-images/fg_1829015-idr-2787.jpg?sfvrsn=1f6a1281_2","credit":"Janes LAAD 2019 photograph: IACIT SCE 0100 DRONEBlocker module","page":"https://www.janes.com/osint-insights/defence-news/laad-2019-iacit-develops-small-uav-jammer-for-militaries","label":"IACIT SCE 0100 DRONEBlocker module photograph"}];
+ for (const p of photos){
+   const o=a.find(x=>x.name===p.n);if(!o)continue;
+   o.gallery_items=o.gallery_items||[];
+   if(!o.gallery_items.some(x=>x.src===p.url))o.gallery_items.unshift({src:p.url,type:"photo",tag:"SOURCE PHOTO",credit:p.credit});
+   o.media=o.media||{};o.media.imageUrl=p.url;o.media.local=p.url;o.media.publisherUrl=p.page;o.media.credit=p.credit;
+   if(!(o.sources||[]).some(x=>x.url===p.page))o.sources.unshift({label:p.label,url:p.page});
+ }
+ const zen=a.find(x=>x.name==="Zen Anti-Drone System (ZADS)");
+ if(zen){
+  zen.buyers="India armed forces procurement; India DDP official export product register names Armenia as receiving country. Exact Armenian configuration/date not supplied.";
+  zen.usage=zen.buyers+" Janes reports Indian Army contracts and an upgraded variant launched May 2026.";
+  zen.cost="India: Janes Sept 2023 contract for 20 ZADS systems INR2.27bn, with other driving-simulator procurement separately; contract average is not system sale price. Two Oct 2025 MoD upgrade orders total INR2.89bn including GST: again not unit price.";
+  zen.sources.unshift({label:"India defence export listing: ZADS and Armenia buyer",url:"https://www.ddpmod.gov.in/hi/node/7193"},{label:"Janes 2023 Indian Army procurement with 20 ZADS",url:"https://www.janes.com/defence-intelligence-insights/defence-news/c4isr/zen-technologies-to-provide-c-uas-and-driving-simulators-to-indian-army"},{label:"Zen official company filing / orders register",url:"https://www.zentechnologies.com/corporate-announcements"});
+ }
+})();
