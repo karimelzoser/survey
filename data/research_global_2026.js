@@ -36,3 +36,21 @@
   zen.sources.unshift({label:"India defence export listing: ZADS and Armenia buyer",url:"https://www.ddpmod.gov.in/hi/node/7193"},{label:"Janes 2023 Indian Army procurement with 20 ZADS",url:"https://www.janes.com/defence-intelligence-insights/defence-news/c4isr/zen-technologies-to-provide-c-uas-and-driving-simulators-to-indian-army"},{label:"Zen official company filing / orders register",url:"https://www.zentechnologies.com/corporate-announcements"});
  }
 })();
+
+
+/* Official vehicle photograph and documented demonstration, not simulated
+   subsystem imagery or proof of independently replicated performance. */
+(function(){
+ const systems=window.CUAS_V3||[];
+ const pictures=[
+  {name:"GUARDION C-UAS",url:"https://guardion.eu/en/content/GUARDION/3551/image-thumb__3551__content-def-w/guardion-inaction-vehicle-black-555x480.jpg",credit:"GUARDION consortium official photo: two sensor-equipped mobile demonstration vehicles",source:"https://guardion.eu/en/solution"},
+  {name:"Indrajaal distributed C-UAS",url:"https://timestech.in/wp-content/uploads/2023/09/Governor-with-Wg-Cdr-Sai-Mallela-Retd-witnessing-the-demo.jpg",credit:"TimesTech 2023 editorial photo of a Grene Robotics Indrajaal demo with displayed equipment; not the complete installed system",source:"https://timestech.in/grene-robotics-debuts-indrajaal-the-worlds-sole-autonomous-c-uas-in-hyderabad/"}
+ ];
+ for(const p of pictures){const o=systems.find(x=>x.name===p.name);if(!o)continue;o.gallery_items=o.gallery_items||[];if(!o.gallery_items.some(x=>x.src===p.url))o.gallery_items.unshift({src:p.url,type:"photo",tag:"DEMONSTRATION",credit:p.credit});o.media=o.media||{};o.media.imageUrl=p.url;o.media.local=p.url;o.media.credit=p.credit;o.media.publisherUrl=p.source;o.sources.unshift({label:"Documented equipment / demonstration photograph",url:p.source});}
+ const sky=systems.find(x=>x.name==="Sky Fortress (acoustic network)");
+ if(sky){
+  sky.usage+=" Updated media reporting (July 2025) describes approximately 14,000 acoustic nodes; source dates and scope differ from the U.S. Army's quoted 9,500-node earlier estimate. October 2026 reporting documents Lithuania adoption plans.";
+  sky.upgrades+=" By 2025 reporting describes third-generation purpose-built processors and sound hardware replacing early smartphone nodes.";
+  sky.sources.unshift({label:"UNITED24 Media July 2025 Sky Fortress third-generation reporting",url:"https://united24media.com/war-in-ukraine/sky-fortress-ukraines-acoustic-detection-system-that-tracks-drones-cheap-and-fast-9451"},{label:"U.S. Army 2026 acoustic drone detection network study",url:"https://api.army.mil/e2/c/downloads/2026/04/30/af450e75/no-26-1115-listening-to-the-sky-acoustic-drone-detection-in-ukraine-mar-26.pdf"});
+ }
+})();
