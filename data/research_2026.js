@@ -10,3 +10,16 @@ for(const e of entries){const id=++nextId;const [model,type,band,detectRange,cov
 window.CUAS_EDITORIAL_TOP3=ranking;
 window.CUAS_SOURCE_AUDIT={date:"2026-11-10",prior:35,added:entries.length,newTotal:window.CUAS_V3.length,radarProfiles:Object.keys(radar).length,coverageNotice:"Curated public-source sample. No credible claim of exhaustive global coverage; performance figures are variant- and target-dependent."};
 })();
+
+/* Evidence/media follow-up: sources rechecked 10 November 2026. */
+(function(){
+  const a=window.CUAS_V3||[];
+  const find=id=>a.find(s=>s.id===id);
+  const movie=(id,items)=>{const o=find(id);if(!o)return;o.video_items=(o.video_items||[]).concat(items);o.videos=(o.videos||[]).concat(items.map(x=>({label:x.title,url:x.url})));};
+  movie(36,[{type:"youtube",id:"nEwX7VYUz9k",title:"Zen Technologies ADS — Salwas live trial (2025)",source:"Zen Technologies official channel",url:"https://www.youtube.com/watch?v=nEwX7VYUz9k"}]);
+  movie(38,[{type:"publisher",title:"Indrajaal demonstration videos",source:"Grene Robotics official channel",url:"https://www.youtube.com/channel/UCoWXg-wpEYJ0WE3xQ5cDgeA"}]);
+  movie(39,[{type:"youtube",id:"Drw4YudSJfs",title:"Bhargavastra May 2025 trials news footage",source:"ThePrint · independent news video, not manufacturer demonstration",url:"https://www.youtube.com/watch?v=Drw4YudSJfs"}]);
+  movie(43,[{type:"publisher",title:"ReGUARD 3D drone-tracking demonstration",source:"RETIA official product page video gallery",url:"https://www.retia.eu/products/radars/reguard/"}]);
+  const robin=find(41);if(robin){robin.radar.detect="5 km standard instrumented; optional Long-Range Mode (LRM) switches to 12 km instrumented; neither is universal micro-drone detection range";robin.range_data.detect="5 km standard instrumented / 12 km LRM instrumented (manufacturer); target-class detection needs separate verification";}
+  const reguard=find(43);if(reguard){reguard.radar.type="3D X-band active phased-array (AESA); electronic steering plus mechanical rotation";reguard.radar.band="X-band (RETIA official 2025 brochure)";reguard.radar.detect="DJI Mavic3 / UAV Raven: 5 km rotation, 6 km sector (manufacturer brochure); 18 km instrumented limit";reguard.radar.coverage="360° mechanical rotation or 90° sector; up to 56° elevation; 15 rpm rotational mode";reguard.radar.url="https://www.retia.eu/wp-content/uploads/2025/05/ReGuard.pdf";reguard.range_data.detect="5 km rotating or 6 km sector for DJI Mavic3/Raven (brochure); 18 km instrumented maximum";reguard.sources.unshift({label:"RETIA full sensor/target-class data sheet",url:reguard.radar.url});}
+})();
