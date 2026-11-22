@@ -18,6 +18,6 @@
 <script src="parts/018.js"></script>
 <script src="parts/019.js"></script>
 <script src="parts/020.js"></script>
-<script src="parts/021.js"></script><script src="briefing-embedded.js"></script><script>
-(function(){const p=window.__ATLAS_PARTS||[];if(p.length!==21||p.some(x=>typeof x!=="string")){document.getElementById("status").textContent="A presentation file could not load. Reload the page.";return;}const original=p.join("");const extra=window.__ATLAS_BRIEFING_REFRESH;const improved=extra?original.replace("</head>",'<style id="briefing-refresh">'+extra.css+"</style></head>").replace("</body>","<scr"+"ipt>"+extra.js+"</scr"+"ipt></body>"):original;window.__ATLAS_PARTS=null;document.open();document.write(improved);document.close();})();
+<script src="parts/021.js"></script><script src="briefing-embedded.js"></script><script src="qa-embedded.js"></script><script>
+(function(){const p=window.__ATLAS_PARTS||[];if(p.length!==21||p.some(x=>typeof x!=="string")){document.getElementById("status").textContent="A presentation file could not load. Reload the page.";return;}const original=p.join("");const extra=window.__ATLAS_BRIEFING_REFRESH,qa=window.__ATLAS_PRO_QA;const improved=extra?original.replace("</head>",'<style id="briefing-refresh">'+extra.css+(qa?qa.css:"")+"</style></head>").replace("</body>","<scr"+"ipt>"+extra.js+(qa?qa.js:"")+"</scr"+"ipt></body>"):original;window.__ATLAS_PARTS=null;document.open();document.write(improved);document.close();})();
 </script></body></html>
