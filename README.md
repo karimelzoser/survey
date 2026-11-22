@@ -4,7 +4,7 @@
 
 After extracting the ZIP, open **`atlas-2026/index.html`** in Chrome or Edge and keep its **`parts/`** folder beside it. The release contains 134 UAS and 81 Counter-UAS curated families, country and type navigation, comparison tables, flags, media links, and technical profiles.
 
-**Release directory:** https://github.com/karimelzoser/survey/tree/main/atlas-2026
+**Engineering QA release (22 Nov 2026):** the combined atlas adds a source-derived 215-system technical matrix with search, country/domain filters and 2–3-system side-by-side comparisons; 11 public-record laser optical/thermal engineering profiles; and an evidence/media audit tab. All technical details are read from the original embedded UAS/Counter-UAS JSON, not duplicated or invented. Comparison and dossier data are paginated for presentation-sized viewports. Standalone export includes these enhancements. The official Egyptian Air Defence emblem still requires internet access; authentic OEM logos and missing UAS equipment photos are openly marked for source verification. This is a code/research presentation update, not independent weapons-performance verification.\n\n**Release directory:** https://github.com/karimelzoser/survey/tree/main/atlas-2026
 
 **Presentation note:** Repository root `index.html` now opens the latest combined atlas. The original root presentation remains at `legacy-counter-uas.html` for comparison, and its `data/`, `app.js` and `styles.css` remain intact. The 2026 atlas opens with a four-step bilingual research briefing: formal cover, research questions, country comparison and engineering evaluation schema. `atlas-2026/download.html` includes this briefing within the exported standalone file.
 
