@@ -6,6 +6,8 @@ After extracting the ZIP, open **`atlas-2026/index.html`** in Chrome or Edge and
 
 **Release directory:** https://github.com/karimelzoser/survey/tree/main/atlas-2026
 
+**Presentation note:** Repository root `index.html` now opens the latest combined atlas. The original root presentation remains at `legacy-counter-uas.html` for comparison, and its `data/`, `app.js` and `styles.css` remain intact. The 2026 atlas opens with a four-step bilingual research briefing: formal cover, research questions, country comparison and engineering evaluation schema. `atlas-2026/download.html` includes this briefing within the exported standalone file.
+
 **Online viewing:** Once the repository owner enables GitHub Pages under **Settings → Pages → Build and deployment → Source: GitHub Actions**, the included workflow can publish the atlas at https://karimelzoser.github.io/survey/atlas-2026/ . The Pages deployment was blocked at the site-enablement step by integration permissions, so this URL is not yet confirmed live.
 
 ---
