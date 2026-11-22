@@ -1,0 +1,25 @@
+/* Evidence-led slide and comparison QA */
+.brief-primary:focus-visible,.brief-secondary:focus-visible,.brief-step:focus-visible{outline:3px solid #f4cb90;outline-offset:3px}
+.result .maker{font-weight:760;color:#315b73}
+#portal:has(.analytics) .pane-head{margin-bottom:8px}
+#portal:has(.analytics) .pane-head h1{font-size:clamp(26px,3vw,39px)}
+#portal:has(.analytics) .pane-head p{font-size:11px;line-height:1.25}
+#portal:has(.analytics) .stats-strip{margin-bottom:10px}
+#portal:has(.analytics) .stats-strip .stat-panel{padding:8px 12px}
+#portal:has(.analytics) .stats-strip .stat-panel strong{font-size:21px}
+#portal:has(.analytics) .analytics{padding:10px 14px}
+#portal:has(.analytics) .analytics .exp-tabs{margin:3px 0 8px}
+#portal:has(.analytics) .analytics .barlegend{margin:5px 0 9px}
+#portal:has(.analytics) .atlas-table th{padding:8px 9px}
+#portal:has(.analytics) .atlas-table td{padding:7px 9px}
+#portal:has(.analytics) .analytics p:last-child{font-size:10px;line-height:1.2;margin:8px 0}
+#portal:has(.analytics) .atlas-table tbody tr[hidden]{display:none!important}
+#portal:has(.analytics) .table-scroll{max-height:none;overflow-x:auto;overflow-y:clip}
+.qa-pagination{display:flex;align-items:center;justify-content:center;gap:12px;background:#e8f0f5;color:#274a61;font-size:11px;font-weight:850;padding:8px;border-top:1px solid #bed0dd}
+.qa-pagination button{background:#fff;border:1px solid #adbfce;border-radius:6px;padding:6px 11px;color:#16384f;font-size:11px;font-weight:850}
+.qa-pagination button:disabled{opacity:.3}
+@media(min-width:1024px) and (min-height:700px){
+#portal:has(.analytics){height:100dvh;min-height:0;overflow:hidden;display:flex;flex-direction:column}
+#portal:has(.analytics) .container{flex:1;min-height:0;overflow:hidden;width:100%;padding-top:10px;padding-bottom:0}
+#portal:has(.analytics) .footer{display:none}}
+@media(max-width:1023px),(max-height:699px){#portal:has(.analytics) .table-scroll{overflow:auto;max-height:62vh}}

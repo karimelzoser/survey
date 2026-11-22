@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+ <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+ <title>Counter-UAS Atlas 2026 | Global Systems & Evidence</title>
+ <meta name="description" content="Interactive, source-based engineering presentation covering 37 military and civilian counter-UAS systems, architecture, specifications, operational evidence, cost and comparisons.">
+ <meta name="theme-color" content="#080d14">
+ <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+ <div id="app">
+  <div class="ambient" aria-hidden="true"><div class="gridlines"></div><div class="noise"></div><div class="scanline"></div></div>
+  <header id="header"><div class="brand-mark" aria-label="Global Counter-UAS Atlas"><span class="brand-symbol">◎</span><span>COUNTER<span class="brand-gold">/</span>UAS <small>TECHNOLOGY ATLAS</small></span></div><div id="chapter" class="header-chapter">RESEARCH / 2026</div><button id="openDirectory" class="header-action" title="Open system directory (M)"><span>ATLAS INDEX</span><span aria-hidden="true">☷</span></button></header>
+  <main id="stage" aria-live="polite"><section id="scene" class="scene"></section></main>
+  <footer id="footer"><div class="count" id="count">01 / 01</div><div class="progress-track"><div id="progress"></div></div><div class="deck-actions"><button id="prev" title="Previous (←)">‹</button><button id="next" title="Next (→)">›</button><button id="fullscreen" title="Fullscreen">⛶</button></div></footer>
+  <div id="directory" class="drawer hidden" role="dialog" aria-modal="true" aria-label="System directory"><div class="drawer-backdrop" id="closeOverlay"></div><div class="drawer-panel"><div class="drawer-top"><div><div class="eyebrow">DIRECTORY</div><h2>37 systems.<br><em>One global view.</em></h2></div><button id="closeDirectory" class="x" aria-label="Close">×</button></div><div class="drawer-tools"><input id="search" type="search" placeholder="Search system, country, manufacturer or technology…" autocomplete="off"><select id="dirType"><option value="">All technologies</option></select></div><div id="directoryList" class="directory-list"></div><div class="drawer-bottom">Use ↑ ↓ to find, Enter to open, Esc to close. <button id="goCompare">OPEN COMPARISON ↗</button></div></div></div>
+  <div id="mediaModal" class="media-modal hidden" role="dialog" aria-modal="true" aria-label="Media viewer"><div class="media-scrim" id="mediaScrim"></div><div class="media-container"><button id="mediaClose" class="media-close" aria-label="Close media">×</button><div id="mediaContents"></div></div></div>
+  <div id="toast" class="toast" role="status"></div>
+ </div>
+ <script src="data/systems.js"></script><script src="app.js"></script>
+</body>
+</html>
