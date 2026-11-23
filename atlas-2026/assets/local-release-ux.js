@@ -54,11 +54,11 @@ function galleryDraw(){
 
 function renderLicensedSources(){
  if(!gallery.open||!galleryRecord||gallery.querySelector(".licensed-source-links"))return;
- const entries=(galleryRecord.equipment_images||[]).filter(x=>!x.local&&x.license_url&&x.source_url&&/^https:\/\//i.test(x.source_url)&&/^https:\/\//i.test(x.license_url));
+ const entries=(galleryRecord.equipment_images||[]).filter(x=>!x.local&&x.source_url&&/^https:\/\//i.test(x.source_url)&&(x.license_url||x.civil_media_verified===true));
  if(!entries.length)return;
  const section=document.createElement("div");section.className="licensed-source-links";section.style.cssText="margin-top:12px;padding:10px;border-top:1px solid #c8d8e1;font-size:12px";
- const h=document.createElement("strong");h.textContent=L("Licensed photographs available online","صور مرخصة متاحة عبر الإنترنت");section.append(h);
- for(const x of entries){const p=document.createElement("p"),a=document.createElement("a"),license=document.createElement("a");a.href=x.source_url;a.target="_blank";a.rel="noopener noreferrer";a.textContent=L("Open photograph and attribution","فتح الصورة وبيانات الإسناد");license.href=x.license_url;license.target="_blank";license.rel="noopener noreferrer";license.textContent=x.license||"License";p.append(a,document.createTextNode(" · "+(x.credit||"")+" · "),license);section.append(p)}
+ const h=document.createElement("strong");h.textContent=L("Photographic sources available online","مصادر الصور المتاحة عبر الإنترنت");section.append(h);
+ for(const x of entries){const p=document.createElement("p"),a=document.createElement("a"),license=document.createElement("a");a.href=x.source_url;a.target="_blank";a.rel="noopener noreferrer";a.textContent=L("Open photograph and attribution","فتح الصورة وبيانات الإسناد");if(x.license_url&&/^https:\/\//i.test(x.license_url)){license.href=x.license_url;license.target="_blank";license.rel="noopener noreferrer";license.textContent=x.license||"License";}else{license.removeAttribute("href");license.textContent=L("Reuse rights unconfirmed","حقوق إعادة الاستخدام غير مؤكدة");}p.append(a,document.createTextNode(" · "+(x.credit||"")+" · "),license);section.append(p)}
  gallery.append(section);
 }
 new MutationObserver(renderLicensedSources).observe(gallery,{attributes:true,childList:true});
@@ -118,10 +118,12 @@ function addSequenceControls(){
  if(all){const t=L("Show all types · Presentation ↗","عرض جميع الأنواع · عرض تقديمي");if(all.textContent!==t)all.textContent=t}
  const heading=root.querySelector(".results-heading");
  if(heading&&!heading.querySelector("#playFilteredResults")){const b=document.createElement("button");b.id="playFilteredResults";b.type="button";b.className="btn gold";b.textContent=L("▶ Present all results","▶ عرض كل النتائج");b.onclick=()=>startSequence(queueRows(),0,b);heading.append(b)}
- if(state?.view==="country"&&!state.country){const grid=root.querySelector(".primary-grid");if(grid&&!grid.querySelector("#egyptCoverageEntry")&&!atlas.catalog.some(x=>x.country==="Egypt")){
- const b=document.createElement("button");b.id="egyptCoverageEntry";b.type="button";b.className="country-card";b.innerHTML='<span class="flag">🇪🇬</span><strong>'+L("Egypt","مصر")+'</strong><span class="splitline"><small>'+L("Coverage pending","التغطية قيد الاستكمال")+'</small><b>↗</b></span>';
- b.onclick=()=>{const d=document.createElement("dialog");d.style.cssText="max-width:560px;padding:24px;border:1px solid #9eb6c6;border-radius:12px;background:#f5f9fc;color:#18334a";d.dir=ar()?"rtl":"ltr";d.innerHTML='<h2>🇪🇬 '+L("Egypt","مصر")+'</h2><p>'+L("Egypt is not represented in the current source catalog. This is a coverage gap, not evidence that Egypt has no systems. Country entries refer to development origin, not every operator.","لا توجد سجلات لمصر في الفهرس الحالي. هذا نقص في التغطية وليس دليلاً على عدم وجود منظومات مصرية. يعتمد فهرس الدول على بلد التطوير وليس جميع الدول المشغلة.")+'</p><h3>'+L("Public exhibition references","مراجع المعارض العامة")+'</h3><p><a href="https://www.egyptdefenceexpo.com/edex2025-exhibitors" target="_blank" rel="noopener noreferrer">EDEX 2025</a><br><a href="https://www.aoi.org.eg/en/news/the-new-products-of-the-aoi-at-edex-2023-are-admired-by-the-official-delegations-participating-in-the-exhibition" target="_blank" rel="noopener noreferrer">'+L("AOI — public exhibition coverage","الهيئة العربية للتصنيع – تغطية المعرض")+'</a><br><a href="https://english.ahram.org.eg/NewsContentMulti/557978/Multimedia.aspx" target="_blank" rel="noopener noreferrer">'+L("Ahram Online — EDEX 2025","الأهرام – إيديكس ٢٠٢٥")+'</a></p><button type="button">'+L("Close","إغلاق")+'</button>';d.querySelector("button").onclick=()=>d.close();d.addEventListener("close",()=>{d.remove();b.focus()});document.body.append(d);d.showModal()};grid.prepend(b)
- }}
+ // Country tiles derive exclusively from indexed system records; never add empty countries.
+ const placeholder=root.querySelector("#egyptCoverageEntry");if(placeholder)placeholder.remove();
+ if(state?.view==="compare"){
+  const labels={countries:["By country","حسب الدولة"],types:["By system type","حسب نوع المنظومة"],makers:["By company / manufacturer","حسب الشركة / الجهة المصنّعة"],cross:["Country × system type","الدولة × نوع المنظومة"]};
+  for(const b of root.querySelectorAll(".exp-tabs button[data-tab]")){const pair=labels[b.dataset.tab];if(pair){const t=L(pair[0],pair[1]);if(b.textContent!==t)b.textContent=t}}
+ }
  if(cursor>=0&&!$("viewer")?.classList.contains("active"))resetSequence();else updateSequence();
 }
 document.addEventListener("keydown",seqKeys,true);
