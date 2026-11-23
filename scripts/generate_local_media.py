@@ -22,7 +22,7 @@ for i in range(1,22):
  parts.append(json.loads(m.group(1)))
 source="".join(parts)
 def inner(id):
- m=re.search(r'<script id="'+id+r'"[^>]*>(.*?)</script>',source,re.S)
+ m=re.search(r'<script\\b(?=[^>]*\\bid="'+re.escape(id)+r'")[^>]*>(.*?)</script>',source,re.S)
  if not m: raise ValueError("Missing script: "+id)
  return m.group(1)
 catalog=json.loads(inner("catalogData"))["items"]
