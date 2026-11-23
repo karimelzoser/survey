@@ -38,7 +38,39 @@ const s=api.systems;
 if(s&&!d.body.dataset.uxRecords){for(const rec of s){const domain=w.UAS_TEST?"uas":"cuas",meta=byKey.get(domain+"-"+String(rec.id).padStart(3,"0"));if(!meta)continue;if(domain==="uas"){rec.image_url=null}else{for(let i=0;i<(rec.gallery_items||[]).length;i++){const x=meta.equipment_images[i];if(x)rec.gallery_items[i].src=x.local||meta.system_icon}}}d.body.dataset.uxRecords="1"}
 clean(d);translate(d);
 }
-function decorate(){injectNav();if(mediaMode)return;setCards();addIcons($("root"));clean($("root"));translate($("root"));childView()}
+
+/* Local study-media gallery; no remote image requests. */
+const gallery=document.createElement("dialog");
+gallery.style.cssText="width:min(850px,94vw);max-height:90vh;border:1px solid #adc4d2;border-radius:12px;padding:16px;background:#f5f9fc;color:#14334a";
+document.body.append(gallery);
+const localItems=r=>(r.equipment_images||[]).filter(x=>typeof x.local==="string"&&/^assets\/[a-z0-9_./-]+$/i.test(x.local)&&!x.local.includes(".."));
+const photo=x=>String(x.kind||"").toLowerCase()==="photo";
+let galleryRecord=null,galleryIndex=0,galleryReturn=null,availability="all";
+function galleryDraw(){
+ const r=galleryRecord,items=localItems(r),item=items[galleryIndex];
+ gallery.dir=ar()?"rtl":"ltr";
+ gallery.innerHTML='<div style="display:flex;justify-content:space-between;gap:12px;align-items:center"><h2 style="font-size:19px;margin:0">'+safe(r.name)+'</h2><button data-gal="close" aria-label="'+L("Close","إغلاق")+'">×</button></div><img style="width:100%;height:min(48vh,420px);object-fit:contain;background:#102941;margin-top:12px;border-radius:8px" src="'+safe(item?.local||r.system_icon)+'" alt="'+safe(item?item.kind:L("Editorial illustration","رسم توضيحي"))+'"><p style="font-size:12px;line-height:1.5">'+(item?(photo(item)?L("Photograph","صورة فوتوغرافية"):L("Study illustration / crop","رسم أو جزء من صورة")):L("Editorial illustration — not equipment photo","رسم توضيحي وليس صورة للمنظومة"))+' · '+safe(item?.credit||item?.caption||"")+'</p><div style="display:flex;align-items:center;justify-content:space-between"><button data-gal="prev" '+(galleryIndex<=0?'disabled':'')+'>'+L("Previous","السابق")+'</button><span>'+(items.length?(galleryIndex+1)+" / "+items.length:L("No local photo","لا توجد صورة محلية"))+'</span><button data-gal="next" '+(galleryIndex>=items.length-1?'disabled':'')+'>'+L("Next","التالي")+'</button></div>';
+}
+gallery.addEventListener("click",e=>{const b=e.target.closest("[data-gal]");if(!b)return;if(b.dataset.gal==="close"){gallery.close();return}galleryIndex=Math.max(0,Math.min(localItems(galleryRecord).length-1,galleryIndex+(b.dataset.gal==="next"?1:-1)));galleryDraw()});
+gallery.addEventListener("close",()=>galleryReturn?.focus());
+function enhanceGallery(){
+ const grid=document.querySelector(".ux-media-grid");if(!grid)return;
+ let count=0;
+ for(const card of grid.querySelectorAll(".ux-media-card")){
+ const r=M.find(x=>x.name===card.querySelector("h3")?.textContent.trim());if(!r)continue;
+ const items=localItems(r),p=items.some(photo);
+ card.style.display=(availability==="all"||availability==="photo"&&p||availability==="media"&&items.length||availability==="missing"&&!p||availability==="video"&&r.video_items.length)?"":"none";
+ if(card.style.display!=="none")count++;
+ if(!card.querySelector(".ux-gallery-open")){
+ const b=document.createElement("button");b.className="ux-gallery-open";b.textContent=L("VIEW GALLERY","عرض المعرض")+" · "+items.length;b.style.cssText="margin-top:9px;padding:8px;border-radius:6px;border:0;background:#174961;color:white;cursor:pointer;font-weight:800";
+ b.onclick=()=>{galleryRecord=r;galleryIndex=Math.max(0,items.findIndex(photo));galleryReturn=b;galleryDraw();gallery.showModal()};card.lastElementChild.append(b);
+ }}
+ let controls=document.getElementById("uxGalleryFilter");
+ if(!controls){controls=document.createElement("div");controls.id="uxGalleryFilter";controls.style.cssText="display:flex;gap:12px;align-items:center;padding:10px 0";controls.innerHTML='<label>'+L("Media availability","توفر الوسائط")+'</label><select><option value="all">'+L("All records","جميع السجلات")+'</option><option value="photo">'+L("Local photos","صور محلية")+'</option><option value="media">'+L("Any local media","وسائط محلية")+'</option><option value="missing">'+L("No local photo","لا توجد صورة محلية")+'</option><option value="video">'+L("Publisher video link","رابط فيديو الناشر")+'</option></select><span></span>';grid.before(controls);const select=controls.querySelector("select");select.value=availability;select.onchange=()=>{availability=select.value;enhanceGallery()}}
+ const label=count+" / "+grid.children.length;if(controls.querySelector("span").textContent!==label)controls.querySelector("span").textContent=label;
+}
+
+function decorate(){injectNav();if(mediaMode){enhanceGallery();return}setCards();addIcons($("root"));clean($("root"));translate($("root"));childView()}
 let pending=false;function schedule(){if(pending)return;pending=true;requestAnimationFrame(()=>{pending=false;decorate()})}
 new MutationObserver(schedule).observe(document.body,{subtree:true,childList:true});
 const f=$("deckFrame");f?.addEventListener("load",()=>{setTimeout(schedule,40);setTimeout(schedule,350)});
