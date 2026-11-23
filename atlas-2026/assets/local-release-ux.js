@@ -51,6 +51,18 @@ function galleryDraw(){
  gallery.dir=ar()?"rtl":"ltr";
  gallery.innerHTML='<div style="display:flex;justify-content:space-between;gap:12px;align-items:center"><h2 style="font-size:19px;margin:0">'+safe(r.name)+'</h2><button data-gal="close" aria-label="'+L("Close","إغلاق")+'">×</button></div><img style="width:100%;height:min(48vh,420px);object-fit:contain;background:#102941;margin-top:12px;border-radius:8px" src="'+safe(item?.local||r.system_icon)+'" alt="'+safe(item?item.kind:L("Editorial illustration","رسم توضيحي"))+'"><p style="font-size:12px;line-height:1.5">'+(item?(photo(item)?L("Photograph","صورة فوتوغرافية"):L("Study illustration / crop","رسم أو جزء من صورة")):L("Editorial illustration — not equipment photo","رسم توضيحي وليس صورة للمنظومة"))+' · '+safe(item?.credit||item?.caption||"")+'</p><div style="display:flex;align-items:center;justify-content:space-between"><button data-gal="prev" '+(galleryIndex<=0?'disabled':'')+'>'+L("Previous","السابق")+'</button><span>'+(items.length?(galleryIndex+1)+" / "+items.length:L("No local photo","لا توجد صورة محلية"))+'</span><button data-gal="next" '+(galleryIndex>=items.length-1?'disabled':'')+'>'+L("Next","التالي")+'</button></div>';
 }
+
+function renderLicensedSources(){
+ if(!gallery.open||!galleryRecord||gallery.querySelector(".licensed-source-links"))return;
+ const entries=(galleryRecord.equipment_images||[]).filter(x=>!x.local&&x.license_url&&x.source_url&&/^https:\/\//i.test(x.source_url)&&/^https:\/\//i.test(x.license_url));
+ if(!entries.length)return;
+ const section=document.createElement("div");section.className="licensed-source-links";section.style.cssText="margin-top:12px;padding:10px;border-top:1px solid #c8d8e1;font-size:12px";
+ const h=document.createElement("strong");h.textContent=L("Licensed photographs available online","صور مرخصة متاحة عبر الإنترنت");section.append(h);
+ for(const x of entries){const p=document.createElement("p"),a=document.createElement("a"),license=document.createElement("a");a.href=x.source_url;a.target="_blank";a.rel="noopener noreferrer";a.textContent=L("Open photograph and attribution","فتح الصورة وبيانات الإسناد");license.href=x.license_url;license.target="_blank";license.rel="noopener noreferrer";license.textContent=x.license||"License";p.append(a,document.createTextNode(" · "+(x.credit||"")+" · "),license);section.append(p)}
+ gallery.append(section);
+}
+new MutationObserver(renderLicensedSources).observe(gallery,{attributes:true,childList:true});
+
 gallery.addEventListener("click",e=>{const b=e.target.closest("[data-gal]");if(!b)return;if(b.dataset.gal==="close"){gallery.close();return}galleryIndex=Math.max(0,Math.min(localItems(galleryRecord).length-1,galleryIndex+(b.dataset.gal==="next"?1:-1)));galleryDraw()});
 gallery.addEventListener("close",()=>galleryReturn?.focus());
 function enhanceGallery(){
