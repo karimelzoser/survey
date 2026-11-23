@@ -70,7 +70,59 @@ function enhanceGallery(){
  const label=count+" / "+grid.children.length;if(controls.querySelector("span").textContent!==label)controls.querySelector("span").textContent=label;
 }
 
-function decorate(){injectNav();if(mediaMode){enhanceGallery();return}setCards();addIcons($("root"));clean($("root"));translate($("root"));childView()}
+
+/* Filter-scoped presentation controls. */
+let sequence=[],cursor=-1,focusReturn=null;
+const atlas=window.ATLAS_TEST;
+const active=()=>cursor>=0&&sequence.length&&$("viewer")?.classList.contains("active");
+const queueRows=()=>(atlas?.filter?.()||[]).map(x=>({domain:x.domain,id:x.id,name:x.name}));
+function updateSequence(){
+ const toolbar=$("viewer")?.querySelector(".viewer-toolbar");if(!toolbar)return;
+ let bar=$("resultQueueBar");
+ if(!bar){bar=document.createElement("div");bar.id="resultQueueBar";bar.className="result-queue-bar";toolbar.append(bar);bar.innerHTML='<button type="button" data-seq="prev"></button><span role="status" aria-live="polite"></span><button type="button" data-seq="next"></button>';bar.onclick=e=>{const b=e.target.closest("[data-seq]");if(b)stepSequence(b.dataset.seq==="next"?1:-1)}}
+ bar.hidden=!active();if(bar.hidden)return;
+ const prev=bar.querySelector('[data-seq="prev"]'),next=bar.querySelector('[data-seq="next"]'),p=bar.querySelector("span");
+ const a=L("← Previous system","→ المنظومة السابقة"),b=L("Next system →","المنظومة التالية ←"),c=(cursor+1)+" / "+sequence.length+" · "+sequence[cursor].name;
+ if(prev.textContent!==a)prev.textContent=a;if(next.textContent!==b)next.textContent=b;if(p.textContent!==c)p.textContent=c;
+ prev.disabled=cursor===0;next.disabled=cursor===sequence.length-1;
+}
+function resetSequence(){sequence=[];cursor=-1;updateSequence()}
+function openSequence(i){if(i<0||i>=sequence.length)return;cursor=i;const r=sequence[i];atlas.openAtlas(r.domain,r.id,"profile");updateSequence()}
+function startSequence(rows,i=0,focus=null){if(!rows.length)return;sequence=rows.slice();focusReturn=focus;openSequence(i)}
+function stepSequence(d){if(active())openSequence(cursor+d)}
+function stopSequence(){atlas.closeAtlas();resetSequence();focusReturn?.focus();focusReturn=null}
+function seqKeys(e){if(!active()||e.altKey||e.ctrlKey||e.metaKey||e.shiftKey||e.target?.closest?.("input,textarea,select,[contenteditable],video,audio"))return;
+ let d=0;if(e.key==="ArrowRight"||e.key==="PageDown")d=1;else if(e.key==="ArrowLeft"||e.key==="PageUp")d=-1;else return;
+ e.preventDefault();e.stopImmediatePropagation();stepSequence(d);
+}
+function bindSequenceFrame(){let d;try{d=$("deckFrame")?.contentDocument}catch(e){return}if(!d||d.__seqBound)return;d.__seqBound=true;d.addEventListener("keydown",seqKeys,true);
+ d.addEventListener("click",e=>{if(!active())return;const b=e.target.closest("button");if(!b||b.closest("#dossier,.dossier,.dossier-content,[role=dialog]"))return;const id=(b.id||"").toLowerCase(),t=(b.getAttribute("aria-label")||b.title||"").toLowerCase();
+ let v=0;if(/^(nextbtn|btnnext|nextslide|next)$/.test(id)||/^(next slide|next system)$/.test(t))v=1;else if(/^(prevbtn|btnprev|prevslide|prev|previous)$/.test(id)||/^(previous slide|previous system)$/.test(t))v=-1;
+ if(v){e.preventDefault();e.stopImmediatePropagation();stepSequence(v)}
+ },true)}
+function addSequenceControls(){
+ const root=$("root");if(!root||!atlas)return;
+ const all=root.querySelector('[data-action="all-types"]');
+ if(all){const t=L("Show all types · Presentation ↗","عرض جميع الأنواع · عرض تقديمي");if(all.textContent!==t)all.textContent=t}
+ const heading=root.querySelector(".results-heading");
+ if(heading&&!heading.querySelector("#playFilteredResults")){const b=document.createElement("button");b.id="playFilteredResults";b.type="button";b.className="btn gold";b.textContent=L("▶ Present all results","▶ عرض كل النتائج");b.onclick=()=>startSequence(queueRows(),0,b);heading.append(b)}
+ if(state?.view==="country"&&!state.country){const grid=root.querySelector(".primary-grid");if(grid&&!grid.querySelector("#egyptCoverageEntry")&&!atlas.catalog.some(x=>x.country==="Egypt")){
+ const b=document.createElement("button");b.id="egyptCoverageEntry";b.type="button";b.className="country-card";b.innerHTML='<span class="flag">🇪🇬</span><strong>'+L("Egypt","مصر")+'</strong><span class="splitline"><small>'+L("Coverage pending","التغطية قيد الاستكمال")+'</small><b>↗</b></span>';
+ b.onclick=()=>{const d=document.createElement("dialog");d.style.cssText="max-width:560px;padding:24px;border:1px solid #9eb6c6;border-radius:12px;background:#f5f9fc;color:#18334a";d.dir=ar()?"rtl":"ltr";d.innerHTML='<h2>🇪🇬 '+L("Egypt","مصر")+'</h2><p>'+L("Egypt is not represented in the current source catalog. This is a coverage gap, not evidence that Egypt has no systems. Country entries refer to development origin, not every operator.","لا توجد سجلات لمصر في الفهرس الحالي. هذا نقص في التغطية وليس دليلاً على عدم وجود منظومات مصرية. يعتمد فهرس الدول على بلد التطوير وليس جميع الدول المشغلة.")+'</p><button type="button">'+L("Close","إغلاق")+'</button>';d.querySelector("button").onclick=()=>d.close();d.addEventListener("close",()=>{d.remove();b.focus()});document.body.append(d);d.showModal()};grid.prepend(b)
+ }}
+ if(cursor>=0&&!$("viewer")?.classList.contains("active"))resetSequence();else updateSequence();
+}
+document.addEventListener("keydown",seqKeys,true);
+document.addEventListener("click",e=>{const b=e.target.closest("[data-action]");if(!b)return;const a=b.dataset.action;
+ if(a==="all-types"){e.preventDefault();e.stopImmediatePropagation();startSequence(queueRows(),0,b);return}
+ if(a==="open-system"&&state?.view!=="compare"&&$("root")?.querySelector(".results")){const rows=queueRows(),i=rows.findIndex(x=>x.domain===b.dataset.domain&&String(x.id)===String(b.dataset.id));if(i>=0){e.preventDefault();e.stopImmediatePropagation();startSequence(rows,i,b);return}}
+ if(a==="back"&&active()){e.preventDefault();e.stopImmediatePropagation();stopSequence();return}
+ if(a==="switch"&&active())resetSequence();
+},true);
+$("deckFrame")?.addEventListener("load",bindSequenceFrame);
+window.ATLAS_RESULT_PRESENTATION={getQueue:()=>sequence.slice(),getIndex:()=>cursor,step:stepSequence,close:stopSequence};
+
+function decorate(){injectNav();addSequenceControls();if(mediaMode){enhanceGallery();return}setCards();addIcons($("root"));clean($("root"));translate($("root"));childView()}
 let pending=false;function schedule(){if(pending)return;pending=true;requestAnimationFrame(()=>{pending=false;decorate()})}
 new MutationObserver(schedule).observe(document.body,{subtree:true,childList:true});
 const f=$("deckFrame");f?.addEventListener("load",()=>{setTimeout(schedule,40);setTimeout(schedule,350)});
