@@ -4814,7 +4814,18 @@
       "source_url": "https://www.windracers.com/",
       "type_icon": "assets/icons/types/logistics.svg",
       "system_icon": "assets/icons/systems/uas-074.svg",
-      "equipment_images": [],
+      "equipment_images": [
+        {
+          "source_url": "https://commons.wikimedia.org/wiki/File:Windracers_ULTRA_drone.jpg",
+          "original_image_url": "https://upload.wikimedia.org/wikipedia/commons/c/cb/Windracers_ULTRA_drone.jpg",
+          "credit": "Doctordigital / Wikimedia Commons",
+          "kind": "photo",
+          "license": "CC0 1.0",
+          "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+          "local": null,
+          "review_status": "Source and image viewed; redistribution rights unconfirmed unless license stated. Not stored locally."
+        }
+      ],
       "video_items": [
         {
           "title": "Windracers ULTRA — Scottish civil transport trial video",
@@ -5023,7 +5034,18 @@
       "source_url": "https://lp.quantum-systems.com/hubfs/Downloadables/QS_INT_Trinity_Pro_Techsheet_241015_Screen.pdf",
       "type_icon": "assets/icons/types/enterprise.svg",
       "system_icon": "assets/icons/systems/uas-085.svg",
-      "equipment_images": [],
+      "equipment_images": [
+        {
+          "source_url": "https://www.skyflightrobotics.com/trinity-pro",
+          "original_image_url": "https://images.squarespace-cdn.com/content/v1/5eaaf21c8bac17176398be99/9d56ea3b-1d94-4101-875e-ac4a25dbce9f/QS_Trinity%2BPro_Outdoor_MAY2023%2B%2860%29%2B%281%29--.jpg",
+          "credit": "Quantum Systems / Sky Flight Robotics",
+          "kind": "photo",
+          "license": null,
+          "license_url": null,
+          "local": null,
+          "review_status": "Source and image viewed; redistribution rights unconfirmed unless license stated. Not stored locally."
+        }
+      ],
       "video_items": [
         {
           "title": "Trinity Pro — civil mapping and 3D digital twin demonstration",
@@ -5446,13 +5468,30 @@
       "source_url": "https://product.acsl.co.jp/en/product/post-369/",
       "type_icon": "assets/icons/types/enterprise.svg",
       "system_icon": "assets/icons/systems/uas-111.svg",
-      "equipment_images": [],
+      "equipment_images": [
+        {
+          "source_url": "https://product.acsl.co.jp/en/product/post-369/",
+          "original_image_url": "https://product.acsl.co.jp/en/wp-content/uploads/2021/11/210930_ACSL-002_4-min-scaled.jpg",
+          "credit": "ACSL product gallery",
+          "kind": "photo",
+          "license": null,
+          "license_url": null,
+          "local": null,
+          "review_status": "Source and image viewed; redistribution rights unconfirmed unless license stated. Not stored locally."
+        }
+      ],
       "video_items": [
         {
           "title": "SOTEN — publisher introduction hosted on dealer page",
           "external_url": "https://www.maverickdrone.com/collections/acsl",
           "local": null,
           "review_status": "Source page indexed; local video not acquired"
+        },
+        {
+          "title": "ACSL SOTEN — official product introduction linked by ACSL",
+          "external_url": "https://www.youtube.com/watch?v=dLuVJibi2dw",
+          "local": null,
+          "review_status": "Publisher linked video; playback not independently verified"
         }
       ],
       "manufacturer_logo": null,
@@ -5645,7 +5684,18 @@
       "source_url": "https://ageagle.com/drones/ebee-x/",
       "type_icon": "assets/icons/types/enterprise.svg",
       "system_icon": "assets/icons/systems/uas-122.svg",
-      "equipment_images": [],
+      "equipment_images": [
+        {
+          "source_url": "https://drones.grapepathology.org/sensefly-an-ageagle-company",
+          "original_image_url": "https://drones.grapepathology.org/wp-content/uploads/2022/09/image-11-1024x623.png",
+          "credit": "AgEagle via sUAS in Viticulture",
+          "kind": "product image",
+          "license": null,
+          "license_url": null,
+          "local": null,
+          "review_status": "Source and image viewed; redistribution rights unconfirmed unless license stated. Not stored locally."
+        }
+      ],
       "video_items": [
         {
           "title": "eBee X — civil mapping product introduction",
@@ -5668,7 +5718,18 @@
       "source_url": "https://www.flyability.com/elios-3",
       "type_icon": "assets/icons/types/enterprise.svg",
       "system_icon": "assets/icons/systems/uas-123.svg",
-      "equipment_images": [],
+      "equipment_images": [
+        {
+          "source_url": "https://www.flyability.com/elios-3",
+          "original_image_url": "https://www.flyability.com/hs-fs/hubfs/Elios%203%20image.png?height=409&name=Elios+3+image.png&width=676",
+          "credit": "Flyability product page",
+          "kind": "product image",
+          "license": null,
+          "license_url": null,
+          "local": null,
+          "review_status": "Source and image viewed; redistribution rights unconfirmed unless license stated. Not stored locally."
+        }
+      ],
       "video_items": [
         {
           "title": "Elios 3 — indoor inspection demonstration",
