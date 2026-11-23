@@ -2,7 +2,7 @@
 #localUxBack,#localUxMedia{font-size:10px!important;font-weight:850!important;border:1px solid #8ba6b9!important;border-radius:8px!important;background:#17384f!important;color:#f4f6fa!important;padding:9px 11px!important}
 #localUxBack:disabled{opacity:.4}
 #localUxMedia{border-color:#d7b680!important;color:#eac38b!important}
-.identity .insignia-fallback,.new-disclaimer,.footer,.dossier-foot>span{display:none!important}
+.new-disclaimer,.footer,.dossier-foot>span{display:none!important}
 .eng-scroll,.table-scroll{overflow:auto!important;max-height:min(57vh,550px)!important;scrollbar-width:thin;overscroll-behavior:contain}
 .eng-scroll .eng-table{min-width:1320px}
 .ux-icon{width:29px;height:23px;object-fit:contain;border-radius:4px;background:#112f46;margin-right:7px;vertical-align:middle}
