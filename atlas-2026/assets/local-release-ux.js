@@ -2,7 +2,7 @@
 const M=window.LOCAL_MEDIA_MANIFEST?.records||[],byKey=new Map(M.map(x=>[x.key,x]));
 const $=id=>document.getElementById(id),safe=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const ar=()=>document.getElementById("portal")?.dir==="rtl",L=(en,arab)=>ar()?arab:en;
-const missing=/^\s*(?:\*\s*)?(?:not disclosed(?: in the indexed public product or institutional source)?|not publicly (?:quoted|available|reported|disclosed)|undisclosed|no public data|no data available|not specified|n\/a|unknown|not established|not documented)(?:\s*[.*])?\s*$/i;
+const missing=/^\s*(?:\*\s*)?(?:not disclosed[^\n]*|not publicly[^\n]*|undisclosed[^\n]*|no public data|no data available|not specified|n\/a|unknown|not established|not documented)(?:\s*[.*])?\s*$/i;
 const state=window.ATLAS_TEST?.state,nav=[];
 function save(){if(!state)return;nav.push({view:state.view,domain:state.domain,country:state.country,category:state.category,query:state.query,tab:state.tab,limit:state.limit});if(nav.length>50)nav.shift()}
 function back(){const st=nav.pop();if(st&&state){Object.assign(state,st);render()}else window.ATLAS_TEST?.setView("home");window.scrollTo(0,0)}
