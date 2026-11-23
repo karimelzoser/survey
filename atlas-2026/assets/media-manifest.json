@@ -4446,8 +4446,28 @@
       "source_url": "https://shop.autelrobotics.com/pages/evo-max-4t-general-specifications",
       "type_icon": "assets/icons/types/enterprise.svg",
       "system_icon": "assets/icons/systems/uas-051.svg",
-      "equipment_images": [],
-      "video_items": [],
+      "equipment_images": [
+        {
+          "source_url": "https://drone-journal.impress.co.jp/docs/event/1185300.html",
+          "original_image_url": "https://drone-journal.impress.co.jp/img/drone/docs/1185/300/1185300_02_o.jpg",
+          "credit": "Drone Journal / Impress — Japan Drone 2023 exhibition photograph",
+          "kind": "photo",
+          "local": null,
+          "license": null,
+          "license_url": null,
+          "civil_media_verified": true,
+          "review_status": "Photo viewed and model identified in source; redistribution rights unconfirmed; link only."
+        }
+      ],
+      "video_items": [
+        {
+          "title": "Autel EVO Max 4T — B&H commercial product review",
+          "external_url": "https://www.youtube.com/watch?v=cD74eW8Ltq0",
+          "source_url": "https://www.bhphotovideo.com/explora/videos/video/the-evo-max-4t-autels-newest-enterprise-drone",
+          "review_status": "Video title and publisher page verified; local file not acquired.",
+          "local": null
+        }
+      ],
       "manufacturer_logo": null,
       "logo_status": "Not verified — no substitute for official artwork"
     },
@@ -5508,8 +5528,28 @@
       "source_url": "https://www.acsl.co.jp/en/news-release/press-release/4564/",
       "type_icon": "assets/icons/types/enterprise.svg",
       "system_icon": "assets/icons/systems/uas-112.svg",
-      "equipment_images": [],
-      "video_items": [],
+      "equipment_images": [
+        {
+          "source_url": "https://www.acsl.co.jp/news-release/press-release/4216/",
+          "original_image_url": "https://www.acsl.co.jp/admin/wp-content/uploads/2025/06/%E3%83%A2%E3%83%B3%E3%82%B4%E3%83%AB_PF4%E9%A3%9B%E8%A1%8C-300x200.png",
+          "credit": "ACSL — civilian postal-delivery trial photograph, June 2025",
+          "kind": "photo",
+          "local": null,
+          "license": null,
+          "license_url": null,
+          "civil_media_verified": true,
+          "review_status": "Photo viewed and model identified in source; redistribution rights unconfirmed; link only."
+        }
+      ],
+      "video_items": [
+        {
+          "title": "ACSL PF4 — Aeronext food delivery demonstration",
+          "external_url": "https://www.youtube.com/watch?v=-55_ZR_hA4Q",
+          "source_url": "https://aeronext.com/news/mongolia_fooddelivery/",
+          "review_status": "Model-specific video linked from publisher article; playback not verified due to fetch throttling; local file not acquired.",
+          "local": null
+        }
+      ],
       "manufacturer_logo": null,
       "logo_status": "Not verified — no substitute for official artwork"
     },
