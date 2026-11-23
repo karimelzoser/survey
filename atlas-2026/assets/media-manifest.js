@@ -1,0 +1,8 @@
+/* Browser fallback manifest. The GitHub Actions builder replaces this with fully attributed local asset records. */
+(()=>{const items=window.ATLAS_TEST?.catalog||[];const t={};
+const slug=s=>String(s||"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
+const poster=(x)=>{const s='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540"><rect width="960" height="540" fill="#102e46"/><path d="M240 260h480M480 70v380" stroke="#c9ae83" stroke-opacity=".3" stroke-width="7"/><circle cx="480" cy="260" r="110" fill="none" stroke="#d9c18c" stroke-width="7"/><path d="M480 200l50 60-50 60-50-60z" fill="#d9bc82"/><text x="48" y="470" font-size="23" fill="#ffffff" font-family="Arial">EDITORIAL TYPE ICON · NOT A SYSTEM PHOTO</text></svg>';return "data:image/svg+xml,"+encodeURIComponent(s)};
+for(const x of items)t[x.category]="assets/icons/types/"+slug(x.category)+".svg";
+window.LOCAL_TYPE_ICONS=t;
+window.LOCAL_MEDIA_MANIFEST={version:"fallback until media extraction workflow",records:items.map(x=>({id:x.id,key:x.domain+"-"+String(x.id).padStart(3,"0"),name:x.name,country:x.country,domain:x.domain,category:x.category,manufacturer:x.manufacturer,source_url:x.source,type_icon:t[x.category],system_icon:poster(x),equipment_images:[],manufacturer_logo:null,logo_status:"Not authenticated",video_items:(x.videos||[]).map(v=>({title:v.title,external_url:v.url,local:null}))}))};
+})();
