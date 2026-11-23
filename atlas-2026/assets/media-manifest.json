@@ -4383,7 +4383,14 @@
           "original_image_url": "https://www-cdn.djiits.com/cms/uploads/9ff3cbf2e96ec10060796d2c6ac694a8.png"
         }
       ],
-      "video_items": [],
+      "video_items": [
+        {
+          "title": "DJI Matrice 400 — product introduction",
+          "external_url": "https://www.youtube.com/watch?v=3UrKq7xj7TI",
+          "local": null,
+          "review_status": "Source page indexed; local video not acquired"
+        }
+      ],
       "manufacturer_logo": null,
       "logo_status": "Not verified — no substitute for official artwork"
     },
@@ -4405,9 +4412,26 @@
           "kind": "photo",
           "local": null,
           "original_image_url": "https://mnd-assets.mynewsdesk.com/image/upload/ar_16%3A9%2Cc_fill%2Cdpr_auto%2Cf_auto%2Cg_sm%2Cq_auto%3Agood%2Cw_746/qsqvs7mgkirft0o9gt9s"
+        },
+        {
+          "source_url": "https://commons.wikimedia.org/wiki/File:2025-07-10-Waldbrand%C3%BCbung-3639.jpg",
+          "original_image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/05/2025-07-10-Waldbrand%C3%BCbung-3639.jpg/960px-2025-07-10-Waldbrand%C3%BCbung-3639.jpg",
+          "credit": "© Superbass / CC-BY-SA-4.0 (via Wikimedia Commons)",
+          "license": "CC BY-SA 4.0",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "kind": "photo",
+          "local": null,
+          "review_status": "Verified source page and thumbnail; local file not acquired"
         }
       ],
-      "video_items": [],
+      "video_items": [
+        {
+          "title": "Cologne fire department Matrice 350 RTK public demonstration — Superbass / CC BY-SA 4.0",
+          "external_url": "https://commons.wikimedia.org/wiki/File:2025-07-10-Waldbrand%C3%BCbung-video_1.webm",
+          "local": null,
+          "review_status": "Source page indexed; local video not acquired"
+        }
+      ],
       "manufacturer_logo": null,
       "logo_status": "Not verified — no substitute for official artwork"
     },
@@ -4791,7 +4815,14 @@
       "type_icon": "assets/icons/types/logistics.svg",
       "system_icon": "assets/icons/systems/uas-074.svg",
       "equipment_images": [],
-      "video_items": [],
+      "video_items": [
+        {
+          "title": "Windracers ULTRA — Scottish civil transport trial video",
+          "external_url": "https://sate.scot/2024/09/19/a-sustainable-transport-journey-delivered-by-drone/",
+          "local": null,
+          "review_status": "Source page indexed; local video not acquired"
+        }
+      ],
       "manufacturer_logo": null,
       "logo_status": "Not verified — no substitute for official artwork"
     },
@@ -4854,8 +4885,26 @@
       "source_url": "https://www.parrot.com/en/drones/anafi-ai/technical-documentation/flight-performances",
       "type_icon": "assets/icons/types/enterprise.svg",
       "system_icon": "assets/icons/systems/uas-078.svg",
-      "equipment_images": [],
-      "video_items": [],
+      "equipment_images": [
+        {
+          "source_url": "https://commons.wikimedia.org/wiki/File:Parrot_PF728330_ANAFI_Ai_(FA3KP379LP)_(2-25-2024).jpg",
+          "original_image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/44/Parrot_PF728330_ANAFI_Ai_%28FA3KP379LP%29_%282-25-2024%29.jpg/960px-Parrot_PF728330_ANAFI_Ai_%28FA3KP379LP%29_%282-25-2024%29.jpg",
+          "credit": "ZLEA / CC BY-SA 4.0 (Wikimedia Commons)",
+          "license": "CC BY-SA 4.0",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "kind": "photo",
+          "local": null,
+          "review_status": "Verified source page and thumbnail; local file not acquired"
+        }
+      ],
+      "video_items": [
+        {
+          "title": "ANAFI Ai — publisher video collection",
+          "external_url": "https://www.parrot.com/en/support/anafi-ai/video-tutorials",
+          "local": null,
+          "review_status": "Source page indexed; local video not acquired"
+        }
+      ],
       "manufacturer_logo": null,
       "logo_status": "Not verified — no substitute for official artwork"
     },
@@ -4975,7 +5024,14 @@
       "type_icon": "assets/icons/types/enterprise.svg",
       "system_icon": "assets/icons/systems/uas-085.svg",
       "equipment_images": [],
-      "video_items": [],
+      "video_items": [
+        {
+          "title": "Trinity Pro — civil mapping and 3D digital twin demonstration",
+          "external_url": "https://www.youtube.com/watch?v=y_Ubr-6zKOE",
+          "local": null,
+          "review_status": "Source page indexed; local video not acquired"
+        }
+      ],
       "manufacturer_logo": null,
       "logo_status": "Not verified — no substitute for official artwork"
     },
@@ -5391,7 +5447,14 @@
       "type_icon": "assets/icons/types/enterprise.svg",
       "system_icon": "assets/icons/systems/uas-111.svg",
       "equipment_images": [],
-      "video_items": [],
+      "video_items": [
+        {
+          "title": "SOTEN — publisher introduction hosted on dealer page",
+          "external_url": "https://www.maverickdrone.com/collections/acsl",
+          "local": null,
+          "review_status": "Source page indexed; local video not acquired"
+        }
+      ],
       "manufacturer_logo": null,
       "logo_status": "Not verified — no substitute for official artwork"
     },
@@ -5583,7 +5646,14 @@
       "type_icon": "assets/icons/types/enterprise.svg",
       "system_icon": "assets/icons/systems/uas-122.svg",
       "equipment_images": [],
-      "video_items": [],
+      "video_items": [
+        {
+          "title": "eBee X — civil mapping product introduction",
+          "external_url": "https://www.youtube.com/watch?v=RQdf-CZam3A",
+          "local": null,
+          "review_status": "Source page indexed; local video not acquired"
+        }
+      ],
       "manufacturer_logo": null,
       "logo_status": "Not verified — no substitute for official artwork"
     },
@@ -5599,7 +5669,14 @@
       "type_icon": "assets/icons/types/enterprise.svg",
       "system_icon": "assets/icons/systems/uas-123.svg",
       "equipment_images": [],
-      "video_items": [],
+      "video_items": [
+        {
+          "title": "Elios 3 — indoor inspection demonstration",
+          "external_url": "https://www.flyability.com/typ-demo-video-elios-3",
+          "local": null,
+          "review_status": "Source page indexed; local video not acquired"
+        }
+      ],
       "manufacturer_logo": null,
       "logo_status": "Not verified — no substitute for official artwork"
     },
