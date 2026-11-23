@@ -5,15 +5,15 @@ const ar=()=>document.getElementById("portal")?.dir==="rtl",L=(en,arab)=>ar()?ar
 const missing=/^\s*(?:\*\s*)?(?:not disclosed[^\n]*|not publicly[^\n]*|undisclosed[^\n]*|no public data|no data available|not specified|n\/a|unknown|not established|not documented)(?:\s*[.*])?\s*$/i;
 const state=window.ATLAS_TEST?.state,nav=[];
 function save(){if(!state)return;nav.push({view:state.view,domain:state.domain,country:state.country,category:state.category,query:state.query,tab:state.tab,limit:state.limit});if(nav.length>50)nav.shift()}
-function back(){const st=nav.pop();if(st&&state){Object.assign(state,st);render()}else window.ATLAS_TEST?.setView("home");window.scrollTo(0,0)}
-document.addEventListener("click",e=>{const el=e.target.closest("[data-action]");if(!el||!state||el.id==="localUxBack")return;if(/^(home|country|weapon|compare|choose-country|compare-country|choose-domain|choose-type|compare-type|all-types|filter-domain)$/.test(el.dataset.action||""))save()},true);
+function back(){if(mediaMode){mediaMode=false;render();return}const st=nav.pop();if(st&&state){Object.assign(state,st);render()}else window.ATLAS_TEST?.setView("home");window.scrollTo(0,0)}
+document.addEventListener("click",e=>{const el=e.target.closest("[data-action]");if(!el||!state||el.id==="localUxBack")return;if(/^(home|country|weapon|compare|choose-country|compare-country|choose-domain|choose-type|compare-type|all-types|filter-domain)$/.test(el.dataset.action||"")){mediaMode=false;save()}},true);
 function clean(root){if(!root)return;for(const dd of root.querySelectorAll("dd,.kv dd,.eng-table td")){if(missing.test(dd.textContent)){if(dd.closest(".kv"))dd.closest(".kv").hidden=true;else if(dd.textContent)dd.textContent=""}}}
 const labels={"ALL COUNTRIES":"كل الدول","ALL DOMAINS":"كل المجالات","ALL TYPES":"كل الأنواع","COUNTRY / ORIGIN":"الدولة / المنشأ","TECHNICAL COMPARISON MATRIX":"جدول المقارنة الفنية","SCROLL TABLE":"التمرير المتصل","ENABLE PAGES":"تفعيل الصفحات","SCROLL":"التمرير","ENABLE PAGINATION":"تفعيل الصفحات","PREVIOUS":"السابق","NEXT":"التالي","EXPORT ALL 215":"تصدير بيانات المنظومات","SELECT COUNTRY":"اختيار الدولة","SELECT DOMAIN":"اختيار المجال","COMPARE SELECTED":"قارن المنظومات المختارة","FIELD":"البيان","STATUS":"الحالة","SOURCE":"المصدر","MANUFACTURER":"الشركة المصنّعة","COUNTRY":"الدولة","TYPE":"النوع","AIRFRAME":"هيكل الطائرة","PAYLOAD":"الحمولة","ENDURANCE":"زمن البقاء","RADAR":"الرادار","RANGE":"المدى","SENSORS":"المستشعرات","DETECTION":"الكشف","SOFTWARE":"البرمجيات","LIMITATIONS":"القيود","PREVIOUS SYSTEM":"المنظومة السابقة","NEXT SYSTEM":"المنظومة التالية","TECHNICAL FIELDS":"البيانات الفنية","System classification":"تصنيف المنظومة","Maturity / field evidence":"النضج والدليل الميداني","Role / platform":"المهمة / المنصة","Sensors / payload":"المستشعرات / الحمولة","Radar / sensing type":"نوع الرادار والاستشعار","Radar / RF band":"نطاق الرادار / التردد","Published detection claim":"مدى الكشف المعلن","Response / effectors":"وسائل المواجهة","Published effect range":"مدى التأثير المعلن","Tracked / concurrent targets":"عدد الأهداف المتتبعة / المتزامنة","Flight endurance":"زمن البقاء في الجو","Air speed":"السرعة الجوية","Service ceiling":"أقصى ارتفاع","Payload capacity":"الحمولة","Data links":"وصلات البيانات","Navigation":"الملاحة","Autonomy / AI / software":"الاستقلالية والذكاء الاصطناعي","Cost evidence":"بيانات التكلفة","Field use / program":"الاستخدام الميداني / البرنامج","Primary source":"المصدر الأصلي","Evidence":"الأدلة","Engineering dossier":"الملف الهندسي"};
 function translate(root){if(!ar()||!root)return;for(const el of root.querySelectorAll("th,dt,label,button,option,.panel-kicker,.eng-heading h2")){if(el.children.length)continue;const t=el.textContent.trim();if(labels[t]&&el.textContent!==labels[t])el.textContent=labels[t]}}
 function injectNav(){const top=document.querySelector(".top-links");if(!top)return;
 if(!$("localUxBack")){const b=document.createElement("button");b.id="localUxBack";b.textContent="← Back";b.onclick=back;top.prepend(b)}
 if(!$("localUxMedia")){const b=document.createElement("button");b.id="localUxMedia";b.textContent="MEDIA";b.onclick=media;top.append(b)}
-const mBtn=$("localUxMedia");if(mBtn)mBtn.textContent=L("MEDIA LIBRARY","مكتبة الوسائط");const b=$("localUxBack");const t=L("← Back","→ رجوع");if(b.textContent!==t)b.textContent=t;b.disabled=!nav.length;
+const b=$("localUxBack");const t=L("← Back","→ رجوع");if(b.textContent!==t)b.textContent=t;b.disabled=!nav.length&&!mediaMode;
 const m=$("localUxMedia"),v=L("MEDIA LIBRARY","مكتبة الوسائط");if(m.textContent!==v)m.textContent=v}
 let mediaMode=false,domain="",query="";
 function media(){mediaMode=true;drawMedia()}
@@ -42,7 +42,7 @@ function decorate(){injectNav();if(mediaMode)return;setCards();addIcons($("root"
 let pending=false;function schedule(){if(pending)return;pending=true;requestAnimationFrame(()=>{pending=false;decorate()})}
 new MutationObserver(schedule).observe(document.body,{subtree:true,childList:true});
 const f=$("deckFrame");f?.addEventListener("load",()=>{setTimeout(schedule,40);setTimeout(schedule,350)});
-document.addEventListener("click",e=>{if(e.target.closest('[data-action="lang"]'))setTimeout(schedule,100)},true);
+document.addEventListener("click",e=>{if(e.target.closest('[data-action="lang"]'))setTimeout(()=>{if(mediaMode)drawMedia();schedule()},100)},true);
 schedule();
 window.ATLAS_LOCAL_UX={manifestCount:M.length,back,media};
 })();
