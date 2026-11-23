@@ -20,3 +20,13 @@
 
 /* User-requested editorial cleanup */
 .brief-cover-buttons [data-brief="1"], .new-actions [data-brief="1"], .brief-foot,.new-credit small,.footer {display:none!important}
+
+/* Presentation navigation follows the complete filtered result set. */
+.result-queue-bar{display:flex;align-items:center;gap:8px;min-width:0;flex:1}
+.result-queue-bar[hidden]{display:none!important}
+.result-queue-bar span{font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1;text-align:center;color:#e8edf1}
+.result-queue-bar button{white-space:nowrap;font-weight:800}
+.result-queue-bar button:disabled{opacity:.4}
+.results-heading{gap:8px;flex-wrap:wrap}
+#egyptCoverageEntry{border-color:#d7b680}
+@media(max-width:900px){.result-queue-bar span{max-width:160px}.result-queue-bar button{font-size:10px!important}}
