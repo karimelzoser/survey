@@ -1,0 +1,30 @@
+name: Build existing local media inventory
+on:
+  workflow_dispatch:
+  push:
+    branches: [feat/local-media-ux-accessibility-2026]
+    paths:
+      - 'scripts/generate_local_media.py'
+      - '.github/workflows/local-media.yml'
+permissions:
+  contents: write
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Extract embedded atlas media and produce manifest
+        run: python3 scripts/generate_local_media.py
+      - name: Commit extracted local assets to same branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add atlas-2026/assets
+          if git diff --cached --quiet; then
+            echo "No changes"
+          else
+            git commit -m "Generate local research media and system icons"
+            git push
+          fi
